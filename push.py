@@ -100,7 +100,7 @@ def push(
     notifier = PushNotification()
 
     if method == "pushplus":
-        token = pushplus_token or os.getenv("PUSHPLUS_TOKEN", "a3d80d84ff434ee79b5db33fc45b6d1d")
+        token = pushplus_token or os.getenv("PUSHPLUS_TOKEN", "None")
         return notifier.push_pushplus(content, token)
 
     elif method == "telegram":

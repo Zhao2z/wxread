@@ -30,9 +30,9 @@ env_headers = os.getenv('WXREAD_HEADERS')
 env_cookies = os.getenv('WXREAD_COOKIES')
 
 # 配置阅读参数
-number = int(env_num) if isinstance(env_num, str) and env_num.isdigit() else 120
-headers = json.loads(env_headers) if env_headers else local_headers
-cookies = json.loads(env_cookies) if env_cookies else local_cookies
+number = int(env_num) if env_num not in (None, '') else 120
+headers = json.loads(json.dumps(eval(env_headers))) if env_headers else local_headers
+cookies = json.loads(json.dumps(eval(env_cookies))) if env_cookies else local_cookies
 
 
 def encode_data(data):
@@ -139,4 +139,5 @@ if env_method:
     )
 
     logger.info(f"⏱️ 开始推送: {message}")
+    # push(message, env_method)
     push(message, env_method)
