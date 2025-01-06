@@ -1,5 +1,6 @@
 # config.py 自定义配置,包括阅读次数、推送token的填写
 import os
+import random
 import re
 
 """
@@ -44,20 +45,20 @@ headers = {
 建议保留区域|默认读三体，其它书籍自行测试时间是否增加
 """
 data = {
-    "appId": "wb182564874663h152492176",
-    "b": "ce032b305a9bc1ce0b0dd2a",
-    "c": "7cb321502467cbbc409e62d",
-    "ci": 70,
-    "co": 0,
-    "sm": "[插图]第三部广播纪元7年，程心艾AA说",
-    "pr": 74,
-    "rt": 30,
-    "ts": 1727660516749,
-    "rn": 31,
-    "sg": "991118cc229871a5442993ecb08b5d2844d7f001dbad9a9bc7b2ecf73dc8db7e",
-    "ct": 1727660516,
-    "ps": "b1d32a307a4c3259g016b67",
-    "pc": "080327b07a4c3259g018787",
+    'appId': 'wb115321887466h497189850',
+    'b': '2bb32ff0813ab6ffcg014315',
+    'c': 'a0232590317ba02ffd918a0',
+    'ci': 161,
+    'co': 338,
+    'sm': '丢掉幻想，准备斗争[插图]（一九四九年八',
+    'pr': 97,
+    'rt': 30,
+    'ts': 1736150350750,
+    'rn': 71,
+    'sg': '4faa1eff10c4f5d98ce48c1a7cbe83e79afc2f30c06618e23ec3cfb8435eef39',
+    'ct': 1736150350,
+    'ps': '30e328c07a5927b5g019b20',
+    'pc': '30e328c07a5927b5g019b20',
 }
 
 
@@ -78,3 +79,6 @@ def convert(curl_command):
 
 
 headers, cookies = convert(curl_str) if curl_str else (headers, cookies)
+
+# Add read random time
+READ_NUM += random.randint(10, 30)
