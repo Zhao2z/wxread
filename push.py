@@ -24,14 +24,14 @@ class PushNotification:
 
     def push_pushplus(self, content, token):
         """PushPlus消息推送"""
-        attempts = 5
+        attempts = 1
         for attempt in range(attempts):
             try:
                 response = requests.post(
                     self.pushplus_url,
                     data=json.dumps({
                         "token": token,
-                        "title": "微信阅读推送...",
+                        "title": "WxAutoRead Notification",
                         "content": content
                     }).encode('utf-8'),
                     headers=self.headers,

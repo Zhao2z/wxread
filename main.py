@@ -54,7 +54,7 @@ def get_wr_skey():
 logger.info("🎉 阅读脚本开始运行！ ")
 logger.info(f"📚 预计阅读时长：{READ_NUM * 0.5}分钟。")
 message = f"🎉 微信读书自动阅读开始！\n📚 预计阅读时长：{READ_NUM * 0.5}分钟。"
-# push(message, PUSH_METHOD)
+push(message, PUSH_METHOD)
 
 index = 1
 while index <= READ_NUM:
