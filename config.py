@@ -81,4 +81,4 @@ def convert(curl_command):
 headers, cookies = convert(curl_str) if curl_str else (headers, cookies)
 
 # Add read random time
-READ_NUM += random.randint(10, 30)
+READ_NUM += random.randint(10, 100)
