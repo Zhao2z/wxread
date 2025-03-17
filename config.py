@@ -64,18 +64,24 @@ data = {
 
 def convert(curl_command):
     """提取bash接口中的headers与cookies"""
+    headers = {}
+
     # 提取 headers
     for match in re.findall(r"-H '([^:]+): ([^']+)'", curl_command):
-        headers[match[0]] = match[1]
+        headers[match[0].strip()] = match[1].strip()
 
-    # 提取 cookies
+    # 提取 cookies（支持 -b 传递）
     cookies = {}
-    cookie_string = headers.pop('cookie', '')
-    for cookie in cookie_string.split('; '):
-        key, value = cookie.split('=', 1)
-        cookies[key] = value
+    cookie_match = re.search(r"-b '([^']+)'", curl_command)
+    if cookie_match:
+        cookie_string = cookie_match.group(1)
+        for cookie in cookie_string.split('; '):
+            if '=' in cookie:
+                key, value = cookie.split('=', 1)
+                cookies[key] = value
 
     return headers, cookies
+
 
 
 headers, cookies = convert(curl_str) if curl_str else (headers, cookies)
