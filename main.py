@@ -67,9 +67,17 @@ def refresh_cookie():
         push(ERROR_CODE, PUSH_METHOD)
         raise Exception(ERROR_CODE)
 
+
 refresh_cookie()
 index = 1
 lastTime = int(time.time()) - 30
+
+
+# push 开始阅读
+if PUSH_METHOD not in (None, ''):
+    logging.info("⏱️ 开始推送...")
+    push(f"🎉 微信读书自动阅读开始了！\n⏱️ 阅读时长：{(index - 1) * 0.5}分钟。", PUSH_METHOD)
+
 while index <= READ_NUM:
     data.pop('s')
     data['b'] = random.choice(book)
