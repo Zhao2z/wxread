@@ -25,19 +25,23 @@ class WXReader:
         self.cookies: dict = cookies
         self.headers: dict = headers
         data = {
-            "appId": "wb182564874663h152492176",
-            "b": "ce032b305a9bc1ce0b0dd2a",
-            "c": "7cb321502467cbbc409e62d",
-            "ci": 70,
-            "co": 0,
-            "sm": "[插图]第三部广播纪元7年，程心艾AA说",
-            "pr": 74,
-            "rt": 30,
-            "ps": "b1d32a307a4c3259g016b67",
-            "pc": "080327b07a4c3259g018787",
+            'appId': 'wb115321887466h725297694',
+            'b': '2bb32ff0813ab6ffcg014315',
+            'c': 'f7132ab03100f718499c650',
+            'ci': 38,
+            'co': 338,
+            'sm': '反对投降活动[插图]（一九三九年六月三十',
+            'pr': 38,
+            'rt': 30,
+            'ts': 1746957507756,
+            'rn': 875,
+            'sg': 'dddfc80cfd9440a901adefcbd8dd77a8d706d1944feb912efc0101224263527b',
+            'ct': 1746957507,
+            'ps': '3bf32de07a69a4ecg018e70',
+            'pc': '4ea320107a69a4ecg0191c2',
         }
         self.book = book or [
-            "36d322f07186022636daa5e",
+            "2bb32ff0813ab6ffcg014315",
             "6f932ec05dd9eb6f96f14b9",
             "43f3229071984b9343f04a4",
             "d7732ea0813ab7d58g0184b8",
@@ -51,7 +55,7 @@ class WXReader:
             "9b13257072562b5c9b1c8d6",
         ]
         self.chapter = chapter or [
-            "ecc32f3013eccbc87e4b62e",
+            "f7132ab03100f718499c650",
             "a87322c014a87ff679a21ea",
             "e4d32d5015e4da3b7fbb1fa",
             "16732dc0161679091c5aeb1",
