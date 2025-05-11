@@ -3,9 +3,9 @@ name: wxread
 on:
   schedule:
     # 凌晨任务：北京时间每天 01:00（UTC 前一天 17:00）
-    # - cron: '0 17 * * *'
-    # 早间任务：北京时间每天 07:00（UTC 前一天 23:00）
-    - cron: '0 23 * * *'
+    - cron: '0 17 * * *'
+    # 早间任务：北京时间每天 05:00（UTC 前一天 21:00）
+    #- cron: '0 21 * * *'
     # 午间任务：北京时间每天 11:40（UTC 03:40）
     #- cron: '40 3 * * *'
     # 晚间任务：北京时间每天 22:00（UTC 14:00）
@@ -35,17 +35,17 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install certifi==2024.8.30 charset-normalizer==3.4.0 idna==3.10 requests==2.32.3 urllib3==2.2.3
+        pip install certifi==2024.8.30 charset-normalizer==3.4.0 idna==3.10 requests==2.32.3 urllib3==2.2.3 loguru==0.7.2
 
     - name: Run deployment script
       env:
-        # WXREAD_CURL_BASH: ${{ secrets.WXREAD_CURL_BASH }}
+        WXREAD_CURL_BASH: ${{ secrets.WXREAD_CURL_BASH }}
         PUSH_METHOD: ${{ secrets.PUSH_METHOD }}
         PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
-        # WXPUSHER_SPT: ${{ secrets.WXPUSHER_SPT }}
-        # TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-        # TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        # READ_NUM: ${{ vars.READ_NUM }}  # 使用 Repository Variables
+        WXPUSHER_SPT: ${{ secrets.WXPUSHER_SPT }}
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        READ_NUM: ${{ vars.READ_NUM }}  # 使用 Repository Variables
 
       run: |
         python main.py
