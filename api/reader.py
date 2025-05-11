@@ -265,6 +265,6 @@ class WXReader:
         onFinish(f"🎉 阅读脚本已完成！成功阅读 {loop_num*(RESIDENCE / 60)} 分钟")
 
 
-if __name__ == "__main__":
-    reader = WXReader.from_curl_bash_from_file("./curl.sh")
-    asyncio.run(reader.sync_run(loop_num=120))
+# if __name__ == "__main__":
+#     reader = WXReader.from_curl_bash_from_file("./curl.sh")
+#     asyncio.run(reader.sync_run(loop_num=120))
