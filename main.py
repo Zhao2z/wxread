@@ -29,8 +29,11 @@ def has_valid_push_token(push_method):
         return bool(WXPUSHER_SPT)
     return False
 
+if curl_str is None:
+    reader = WXReader.from_curl_bash_from_file(curl_str)
+else:
+    reader = WXReader.from_curl_str(curl_str)
 
-reader = WXReader.from_curl_bash(curl_str)
 
 # 新增：根据推送 token 存在与否决定是否推送
 if PUSH_METHOD and has_valid_push_token(PUSH_METHOD):

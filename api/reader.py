@@ -206,9 +206,17 @@ class WXReader:
         # 移除 s 参数，避免后续操做要每次移除
         payload.pop("s", None)
         return {"headers": headers, "cookies": cookies, "payload": payload}
+    
+    @classmethod
+    def from_curl_str(cls, curl_command: str):
+        """
+        从curl中提取 headers、cookies 和 payload，然后创建实例，
+        """
+        config = cls.parse_curl(curl_command)
+        return cls(**config)
 
     @classmethod
-    def from_curl_bash(cls, bash_path: str):
+    def from_curl_bash_from_file(cls, bash_path: str):
         """
         从curl中提取 headers、cookies 和 payload，然后创建实例，
         """
@@ -258,5 +266,5 @@ class WXReader:
 
 
 if __name__ == "__main__":
-    reader = WXReader.from_curl_bash("./curl.sh")
+    reader = WXReader.from_curl_bash_from_file("./curl.sh")
     asyncio.run(reader.sync_run(loop_num=120))
